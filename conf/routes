@@ -7,6 +7,7 @@ GET     /                                       Application.index
 
 POST    /couicoui/?                             Application.post
 GET     /couicoui/?                             Application.allAsJson
+GET     /couicoui/{id}/recouicoui               Application.recouicoui({id})
 
 # Ignore favicon requests
 GET     /favicon.ico                            404

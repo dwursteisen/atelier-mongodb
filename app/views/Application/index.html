@@ -10,7 +10,12 @@
     <div class="col-lg-3">
         <div class="couicouiteur well ">
 
-            <form role="form" action="@{Application.post}">
+            <form role="form" action="@{Application.post}" method="post">
+                <div class="form-group">
+                    <label for="email">Courriel</label>
+                    <input type="email" class="form-control" name="user" placeholder="Ton courriel"
+                           value="${session.courriel}"/>
+                </div>
                 <div class="form-group">
 
                     <textarea name="coui" class="form-control" placeholder="Écrire un nouveau couicoui"></textarea>
@@ -20,6 +25,7 @@
         </div>
         <div class="motsdieses well">
             <h3>Mots Dièses</h3>
+
             <div>
                 <span class="label label-info">mot1</span>
                 <span class="label label-info">mot2</span>
@@ -42,7 +48,12 @@
             </div>
             <div class="panel-body">
                 <p>{{=coui.content}}</p>
-                <span class="label label-primary">Recouicoui : <span class="badge">{{=coui.recouicoui}}</span></span>
+                <!-- TODO: remplacer l'url en dur par du javascript qui calcul la route -->
+                <a href="/couicoui/{{=coui._id}}/recouicoui">
+                    <span class="label label-warning">Recouicoui :
+                    <strong>{{=coui.recouicoui}}</strong>
+                </a>
+                </span>
             </div>
         </div>
 
