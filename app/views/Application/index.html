@@ -1,4 +1,51 @@
 #{extends 'main.html' /}
 #{set title:'Home' /}
 
-#{welcome /}
+
+<div class="container">
+
+    <h1>Pigeon</h1>
+
+
+    <div class="col-lg-3">
+        <div class="couicouiteur well ">
+
+            <form role="form" action="@{Application.post}">
+                <div class="form-group">
+
+                    <textarea name="coui" class="form-control" placeholder="Écrire un nouveau couicoui"></textarea>
+                </div>
+                <button type="submit" class="btn btn-info">Couicoui</button>
+            </form>
+        </div>
+        <div class="motsdieses well">
+            <h3>Mots Dièses</h3>
+            <div>
+                <span class="label label-info">mot1</span>
+                <span class="label label-info">mot2</span>
+                <span class="label label-info">mot3</span>
+                <span class="label label-info">mot4</span>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="couicouiConteneur" class="col-lg-6 col-lg-offset-1"></div>
+
+    <script type="doT/template" id="couicoui">
+        {{~it:coui:i}}
+        <div class="panel panel-primary couicoui">
+            <div class="panel-heading">
+                <h3 class="panel-title"><img src="{{=coui.avatar}}" alt="avatar" class="img-circle avatar"/>
+                    <span>{{=coui.user}}</span>
+                </h3>
+            </div>
+            <div class="panel-body">
+                <p>{{=coui.content}}</p>
+                <span class="label label-primary">Recouicoui : <span class="badge">{{=coui.recouicoui}}</span></span>
+            </div>
+        </div>
+
+        {{~}}
+    </script>
+</div>
