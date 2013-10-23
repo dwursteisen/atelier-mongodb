@@ -2,15 +2,20 @@
 #{set title:'Home' /}
 
 
+
 <div class="container">
+
 
     <h1>Pigeon</h1>
 
 
     <div class="col-lg-3">
+        <div class="alert alert-warning" id="status">
+            <strong>Status</strong>
+        </div>
         <div class="couicouiteur well ">
 
-            <form role="form" action="@{Application.post}" method="post">
+            <form role="form" action="@{Application.post}" method="post" id="formulaire">
                 <div class="form-group">
                     <label for="email">Courriel</label>
                     <input type="email" class="form-control" name="user" placeholder="Ton courriel"
@@ -23,6 +28,7 @@
                 <button type="submit" class="btn btn-info">Couicoui</button>
             </form>
         </div>
+
         <div class="motsdieses well">
             <h3>Mots Dièses</h3>
 
