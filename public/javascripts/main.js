@@ -44,7 +44,7 @@ App.prototype.write = function() {
     $.ajax({
         url : $("#formulaire").attr("action"),
         type: "POST",
-        data: "user="+user+"&coui="+content,
+        data: $("#formulaire").serialize(),
         success: function(data) {
             that.read();
         },
