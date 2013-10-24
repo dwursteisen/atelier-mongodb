@@ -6,6 +6,7 @@
 GET     /                                       Application.index
 
 POST    /couicoui/?                             Application.post
+POST    /concern/?                             Application.saveConcern
 GET     /couicoui/?                             Application.allAsJson
 GET     /couicoui/{id}/recouicoui               Application.recouicoui({id})
 

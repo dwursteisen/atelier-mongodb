@@ -25,6 +25,12 @@
 
                     <textarea name="coui" class="form-control" placeholder="Écrire un nouveau couicoui"></textarea>
                 </div>
+                <button type="submit" class="btn btn-info">Couicoui</button>
+            </form>
+        </div>
+        <div class="concern well">
+
+            <form role="form" action="@{Application.saveConcern}" method="post" id="formulaireConcern">
                 <div class="form-group">
                     <label for="concern">Write Concern</label>
                     <select name="concern" id="concern" class="form-control">
@@ -34,10 +40,10 @@
                         <option value="2" class="text-success">Replica Acknowledged</option>
                     </select>
                 </div>
-                <button type="submit" class="btn btn-info">Couicoui</button>
+                <button type="submit" class="btn btn-info">Save</button>
             </form>
-        </div>
 
+        </div>
         <div class="motsdieses well">
             <h3>Mots Dièses</h3>
 
@@ -64,9 +70,9 @@
             <div class="panel-body">
                 <p>{{=coui.content}}</p>
                 <!-- TODO: remplacer l'url en dur par du javascript qui calcul la route -->
-                <a href="/couicoui/{{=coui._id}}/recouicoui">
+                <a href="/couicoui/{{=coui._id}}/recouicoui" class="recouicoui" data-value="{{=coui._id}}">
                     <span class="label label-warning">Recouicoui :
-                    <strong>{{=coui.recouicoui}}</strong>
+                    <strong class="counter">{{=coui.recouicoui}}</strong>
                 </a>
                 </span>
             </div>

@@ -11,15 +11,24 @@ import play.mvc.Controller;
 public class Application extends Controller {
 
     private static final MongoCollection couicoui = JongoPlugins.collection("couicoui");
+    private static final String CONCERN_SESSION = "concern";
 
     public static void index() {
         render();
     }
 
-    public static void post(String coui, String user, int concern) {
-        couicoui.withWriteConcern(new WriteConcern(concern)).insert(new Couicoui(coui).withUser(user));
+    public static void post(String coui, String user) {
+        couicoui.withWriteConcern(concern()).insert(new Couicoui(coui).withUser(user));
         session.put("courriel", user);
-        index();
+        renderText("OK");
+    }
+
+    private static WriteConcern concern() {
+        try {
+            return new WriteConcern(Integer.parseInt(session.get(CONCERN_SESSION)));
+        } catch (Exception ex) {
+            return WriteConcern.UNACKNOWLEDGED;
+        }
     }
 
     public static void allAsJson() {
@@ -28,8 +37,13 @@ public class Application extends Controller {
     }
 
     public static void recouicoui(String id) {
-        couicoui.withWriteConcern(WriteConcern.NONE).update(new ObjectId(id)).with("{$inc: {recouicoui: 1}}");
-        index();
+        couicoui.withWriteConcern(concern()).update(new ObjectId(id)).with("{$inc: {recouicoui: 1}}");
+        renderText("OK");
+    }
+
+    public static void saveConcern(int concern) {
+        session.put(CONCERN_SESSION, "" + concern);
+        renderText("Concert: " + session.get(CONCERN_SESSION));
     }
 
 
