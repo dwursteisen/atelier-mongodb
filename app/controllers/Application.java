@@ -16,8 +16,8 @@ public class Application extends Controller {
         render();
     }
 
-    public static void post(String coui, String user) {
-        couicoui.withWriteConcern(WriteConcern.NONE).insert(new Couicoui(coui).withUser(user));
+    public static void post(String coui, String user, int concern) {
+        couicoui.withWriteConcern(new WriteConcern(concern)).insert(new Couicoui(coui).withUser(user));
         session.put("courriel", user);
         index();
     }

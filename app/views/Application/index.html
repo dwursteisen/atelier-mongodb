@@ -25,6 +25,15 @@
 
                     <textarea name="coui" class="form-control" placeholder="Écrire un nouveau couicoui"></textarea>
                 </div>
+                <div class="form-group">
+                    <label for="concern">Write Concern</label>
+                    <select name="concern" id="concern" class="form-control">
+                        <option value="-1" class="text-danger">Errors Ignored</option>
+                        <option value="0" class="text-warning">Unacknowledged</option>
+                        <option value="1" class="text-info">Acknowledged</option>
+                        <option value="2" class="text-success">Replica Acknowledged</option>
+                    </select>
+                </div>
                 <button type="submit" class="btn btn-info">Couicoui</button>
             </form>
         </div>

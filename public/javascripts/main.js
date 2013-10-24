@@ -49,7 +49,8 @@ App.prototype.write = function() {
             that.read();
         },
         error: function()  {
-            that.status.end();
+            console.log("KO");
+            that.status.error();
         }
     });
 }
@@ -64,11 +65,16 @@ Status.prototype.fireRead = function() {
 }
 
 Status.prototype.fireWrite = function() {
-    $(this.id).removeClass("alert-info alert-warning alert-success").addClass("alert-danger");
+    $(this.id).removeClass("alert-danger alert-warning alert-success").addClass("alert-info");
     $(this.id).html("Ecriture...");
 }
 
 Status.prototype.end = function() {
-    $(this.id).removeClass("alert-success alert-danger").addClass("alert-warning");
+    $(this.id).removeClass("alert-success alert-danger alert-info").addClass("alert-warning");
     $(this.id).html("Status");
+}
+
+Status.prototype.error = function() {
+    $(this.id).removeClass("alert-success alert-info alert-warning").addClass("alert-danger");
+    $(this.id).html("Error !");
 }
