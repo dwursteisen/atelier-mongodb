@@ -1,7 +1,9 @@
 package models;
 
+import org.apache.commons.lang.StringUtils;
 import org.joda.time.DateTime;
 import org.jongo.marshall.jackson.oid.ObjectId;
+import play.libs.Codec;
 
 /**
  * Created by david on 14/10/13.
@@ -33,6 +35,6 @@ public class Couicoui {
     }
 
     private String computeAvatarUrl(String from) {
-        return from;
+        return String.format("http://www.gravatar.com/avatar/%s", Codec.hexMD5(StringUtils.trim(from)));
     }
 }
