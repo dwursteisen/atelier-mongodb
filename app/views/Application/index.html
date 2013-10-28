@@ -33,14 +33,14 @@
             <form role="form" action="@{Application.saveConcern}" method="post" id="formulaireConcern">
                 <div class="form-group">
                     <label for="concern">Write Concern</label>
-                    <select name="concern" id="concern" class="form-control">
-                        <option value="-1" class="text-danger">Errors Ignored</option>
-                        <option value="0" class="text-warning">Unacknowledged</option>
-                        <option value="1" class="text-info">Acknowledged</option>
-                        <option value="2" class="text-success">Replica Acknowledged</option>
-                    </select>
+                #{select name:'concern', value: session['concern'], id: 'concern', class:'form-control'}
+                    #{option "-1", class:"text-danger"}Errors Ignored #{/option}
+                    #{option "0", class:"text-warning"}Unacknowledged#{/option}
+                    #{option "1", class:"text-info"}Acknowledged#{/option}
+                    #{option "2", class:"text-success"}Replica Acknowledged#{/option}
+                #{/select}
                 </div>
-                <button type="submit" class="btn btn-info">Save</button>
+
             </form>
 
         </div>

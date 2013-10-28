@@ -18,6 +18,11 @@ function App() {
         that.write();
     });
 
+
+    $("#formulaireConcern select").change(function () {
+        $("#formulaireConcern").submit();
+    });
+
     $("#formulaireConcern").submit(function(event) {
         event.preventDefault();
         $.ajax({
