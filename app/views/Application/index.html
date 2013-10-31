@@ -6,7 +6,7 @@
 <div class="container">
 
 
-    <h1><img src="@{'/public/images/logo.png'}" class="avatar" style="background: none;"/>Moineau</h1>
+    <h1><a href="@{Application.index}"><img src="@{'/public/images/logo.png'}" class="avatar" style="background: none;"/>Moineau</a></h1>
 
 
     <div class="col-lg-3">
@@ -44,6 +44,7 @@
             </form>
 
         </div>
+        <!--
         <div class="motsdieses well">
             <h3>Mots Dièses</h3>
 
@@ -54,6 +55,7 @@
                 <span class="label label-info">mot4</span>
             </div>
         </div>
+        -->
     </div>
 
 
@@ -64,7 +66,7 @@
         <div class="panel panel-primary couicoui">
             <div class="panel-heading">
                 <h3 class="panel-title"><img src="{{=coui.avatar}}" alt="avatar" class="img-circle avatar"/>
-                    <span>{{=coui.user}}</span>
+                    <a href="/users/{{=coui.user}}/" class="filter"><span>{{=coui.user}}</span></a>
                 </h3>
             </div>
             <div class="panel-body">

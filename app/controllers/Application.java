@@ -17,6 +17,7 @@ public class Application extends Controller {
         render();
     }
 
+
     public static void post(String coui, String user) {
         couicoui.withWriteConcern(concern()).insert(new Couicoui(coui).withUser(user));
         session.put("courriel", user);
@@ -29,6 +30,11 @@ public class Application extends Controller {
         } catch (Exception ex) {
             return WriteConcern.UNACKNOWLEDGED;
         }
+    }
+
+    public static void filterAsJson(String user) {
+        Iterable<Couicoui> couicouis = couicoui.find("{user: #}", user).as(Couicoui.class);
+        renderJSON(Lists.newArrayList(couicouis));
     }
 
     public static void allAsJson() {

@@ -23,16 +23,31 @@ function App() {
         $("#formulaireConcern").submit();
     });
 
-    $("#formulaireConcern").submit(function(event) {
+    $("#formulaireConcern").submit(function (event) {
         event.preventDefault();
         $.ajax({
-            url:  $("#formulaireConcern").attr("action"),
+            url: $("#formulaireConcern").attr("action"),
             type: "POST",
             data: $("#formulaireConcern").serialize()
         });
     });
 }
 
+function bindEventsOnCouicoui(that, data) {
+    $("#couicouiConteneur").html(that.couicoui(data))
+    $("a.recouicoui").click(function (event) {
+        event.preventDefault();
+
+        var elt = $(event.currentTarget).find(".counter");
+        that.onRecouicoui($(event.currentTarget).attr("href"), elt);
+        return false;
+    });
+    $("a.filter").click(function (event) {
+        event.preventDefault();
+        that.onFilter($(event.currentTarget).attr("href"));
+        return false;
+    });
+}
 App.prototype.read = function () {
     var that = this;
     that.status.fireRead();
@@ -41,14 +56,7 @@ App.prototype.read = function () {
             if (!data || data.length == 0) {
                 return;
             }
-            $("#couicouiConteneur").html(that.couicoui(data))
-            $("a.recouicoui").click(function(event) {
-                    event.preventDefault();
-
-                    var elt = $(event.currentTarget).find(".counter");
-                    that.onRecouicoui($(event.currentTarget).attr("href"), elt);
-                    return false;
-            });
+            bindEventsOnCouicoui(that, data);
             that.status.end();
         },
         error: function () {
@@ -71,6 +79,22 @@ App.prototype.onRecouicoui = function (url, elt) {
     });
 }
 
+App.prototype.onFilter = function (url) {
+    var that = this;
+    that.status.fireRead();
+    $.ajax({url: url, dataType: 'json',
+        success: function (data) {
+            if (!data || data.length == 0) {
+                return;
+            }
+            bindEventsOnCouicoui(that, data);
+            that.status.end();
+        },
+        error: function () {
+            that.status.end();
+        }
+    });
+}
 App.prototype.write = function () {
     var that = this;
     that.status.fireWrite();
