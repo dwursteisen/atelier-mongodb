@@ -53,7 +53,7 @@ App.prototype.read = function () {
     that.status.fireRead();
     $.ajax({url: "/couicoui", dataType: 'json',
         success: function (data) {
-            if (!data || data.length == 0) {
+            if (!data) {
                 return;
             }
             bindEventsOnCouicoui(that, data);
@@ -84,7 +84,7 @@ App.prototype.onFilter = function (url) {
     that.status.fireRead();
     $.ajax({url: url, dataType: 'json',
         success: function (data) {
-            if (!data || data.length == 0) {
+            if (!data) {
                 return;
             }
             bindEventsOnCouicoui(that, data);
