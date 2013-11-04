@@ -2,3 +2,6 @@
 *.ipr
 tmp
 *.iws
+mongodb/data/*
+mongodb/log/*
+test-result

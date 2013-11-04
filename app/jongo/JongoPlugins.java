@@ -4,6 +4,7 @@ import com.fasterxml.jackson.datatype.joda.JodaModule;
 import com.mongodb.DB;
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientURI;
+import org.apache.commons.lang.StringUtils;
 import org.jongo.Jongo;
 import org.jongo.MongoCollection;
 import org.jongo.marshall.jackson.JacksonMapper;
@@ -13,6 +14,8 @@ import play.PlayPlugin;
 import play.exceptions.UnexpectedException;
 
 import java.net.UnknownHostException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * User: Wursteisen David
