@@ -12,8 +12,11 @@ public class Application extends Controller {
 
     private static final MongoCollection couicoui = JongoPlugins.collection("couicoui");
     private static final String CONCERN_SESSION = "concern";
+    private static final WriteConcern DEFAULT_CONCERN = WriteConcern.UNACKNOWLEDGED;
+
 
     public static void index() {
+        concern(); // force default concern in session
         render();
     }
 
@@ -26,9 +29,14 @@ public class Application extends Controller {
 
     private static WriteConcern concern() {
         try {
-            return new WriteConcern(Integer.parseInt(session.get(CONCERN_SESSION)));
+            String strConcern = session.get(CONCERN_SESSION);
+            if(strConcern == null) {
+                session.put(CONCERN_SESSION, DEFAULT_CONCERN.getW());
+                return DEFAULT_CONCERN;
+            }
+            return new WriteConcern(Integer.parseInt(strConcern));
         } catch (Exception ex) {
-            return WriteConcern.UNACKNOWLEDGED;
+            return DEFAULT_CONCERN;
         }
     }
 
