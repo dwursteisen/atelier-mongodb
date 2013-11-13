@@ -1,1 +1,1 @@
-mongod --dbpath=mongodb/data
+mongod --dbpath=mongodb/data --oplogSize 30
