@@ -1,6 +1,7 @@
 package controllers;
 
 import com.google.common.collect.Lists;
+import com.mongodb.ReadPreference;
 import com.mongodb.WriteConcern;
 import jongo.JongoPlugins;
 import models.Couicoui;
@@ -11,7 +12,7 @@ import play.mvc.Controller;
 
 public class Application extends Controller {
 
-    private static final MongoCollection couicoui = JongoPlugins.collection("couicoui");
+    private static final MongoCollection couicoui = JongoPlugins.collection("couicoui").withReadPreference(ReadPreference.secondary());
     private static final String CONCERN_SESSION = "concern";
     private static final WriteConcern DEFAULT_CONCERN = WriteConcern.UNACKNOWLEDGED;
 
