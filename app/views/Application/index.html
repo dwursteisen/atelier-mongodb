@@ -67,13 +67,13 @@
         <div class="panel panel-primary couicoui">
             <div class="panel-heading">
                 <h3 class="panel-title"><img src="{{=coui.avatar}}" alt="avatar" class="img-circle avatar"/>
-                    <a href="/users/{{=coui.user}}/" class="filter"><span>{{=coui.user}}</span></a>
+                    <a href="/couicoui/{{=coui.user}}/" class="filter"><span>{{=coui.user}}</span></a>
                 </h3>
             </div>
             <div class="panel-body">
                 <p>{{=coui.content}}</p>
                 <!-- TODO: remplacer l'url en dur par du javascript qui calcul la route -->
-                <a href="/couicoui/{{=coui._id}}/recouicoui" class="recouicoui" data-value="{{=coui._id}}">
+                <a href="/couicoui/{{=coui.user}}/{{=coui.timestamp}}/recouicoui" class="recouicoui" data-value="{{=coui._id}}">
                     <span class="label label-warning">Recouicoui :
                     <strong class="counter">{{=coui.recouicoui}}</strong>
                 </a>

@@ -5,6 +5,7 @@ import com.mongodb.WriteConcern;
 import jongo.JongoPlugins;
 import models.Couicoui;
 import org.bson.types.ObjectId;
+import org.joda.time.DateTime;
 import org.jongo.MongoCollection;
 import play.mvc.Controller;
 
@@ -46,12 +47,14 @@ public class Application extends Controller {
     }
 
     public static void allAsJson() {
-        Iterable<Couicoui> couicouis = couicoui.find().sort("{now: -1}").limit(50).as(Couicoui.class);
+        Iterable<Couicoui> couicouis = couicoui.find().sort("{timestamp: -1}").limit(50).as(Couicoui.class);
         renderJSON(Lists.newArrayList(couicouis));
     }
 
-    public static void recouicoui(String id) {
-        couicoui.withWriteConcern(concern()).update(new ObjectId(id)).with("{$inc: {recouicoui: 1}}");
+    public static void recouicoui(String user, long timestamp) {
+        couicoui.withWriteConcern(concern()) // \n
+                .update("{user: #, timestamp: #}", user, timestamp) // \n
+                .with("{$inc: {recouicoui: 1}}");
         renderText("OK");
     }
 

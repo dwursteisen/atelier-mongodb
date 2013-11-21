@@ -18,11 +18,11 @@ public class Couicoui {
     public String user;
     public String avatar;
     public int recouicoui = 0;
-    public DateTime now;
+    public long timestamp;
 
     public Couicoui(String coui) {
         content = coui;
-        now = new DateTime();
+        timestamp = new DateTime().getMillis();
     }
 
     public Couicoui withUser(String from) {
@@ -30,7 +30,7 @@ public class Couicoui {
         couicoui.user = from;
         couicoui.avatar = computeAvatarUrl(from);
         couicoui.recouicoui = recouicoui;
-        couicoui.now = now;
+        couicoui.timestamp = timestamp;
         return couicoui;
     }
 

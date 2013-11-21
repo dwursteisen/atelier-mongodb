@@ -8,8 +8,8 @@ GET     /                                       Application.index
 POST    /couicoui/?                             Application.post
 POST    /concern/?                             Application.saveConcern
 GET     /couicoui/?                             Application.allAsJson
-GET     /users/{user}/?                         Application.filterAsJson({user})
-GET     /couicoui/{id}/recouicoui               Application.recouicoui({id})
+GET     /couicoui/{user}/?                         Application.filterAsJson({user})
+GET     /couicoui/{user}/{timestamp}/recouicoui               Application.recouicoui({user}, {timestamp})
 
 # Ignore favicon requests
 GET     /favicon.ico                            404
